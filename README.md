@@ -1,9 +1,14 @@
 # Python小工具合集
 这个项目是一个合集，包含了多个小工具，用Python编写。
 ## 使用方法
-运行每个文件夹下与文件夹同名的python文件即可，详见工具列表的调用方法一栏。
+运行每个文件夹下与文件夹同名的python文件即可。
+## 克隆项目
+使用以下命令克隆项目到本地：
+```bat
+git clone https://github.com/Guojingxing/python-tools.git
+```
 ## 工具列表
-### 1.替换文本中的文字（[replace-words](replace-words)）
+### 1. 替换文本中的文字（[replace-words.py](replace-words/replace-words.py)）
 该工具实现将`1.txt`中的文字按照`trans.txt`中的规则替换，并输出至同文件夹下的`2.txt`中。
 在项目目录下，执行以下命令运行转换工具：
 ```bat
