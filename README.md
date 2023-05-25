@@ -2,9 +2,9 @@
 这个项目是一个合集，包含了多个小工具，用Python编写。
 ## 使用方法
 运行每个文件夹下与文件夹同名的python文件即可。
-## 目录
+## 工具列表
 编号 | 工具 | 链接
-:-:|:-:|:-:
+:-:|:---|:---
 [1](#1)| 批量替换文本中的文字 | [replace-words.py](replace-words/replace-words.py)
 [2](#2)| 提取YouTube链接 | [extract_youtube_links](extract_youtube_links)
 ## 克隆项目
@@ -12,8 +12,8 @@
 ```bat
 git clone https://github.com/Guojingxing/python-tools.git
 ```
-## 工具列表
-### <span id="1">1.</span> 批量替换文本中的文字（[replace-words.py](replace-words/replace-words.py)）
+## 详细说明
+### <span id="1">1.</span> 批量替换文本中的文字
 该工具实现将`1.txt`中的文字按照`trans.txt`中的规则替换，并输出至同文件夹下的`2.txt`中。
 在项目目录下，执行以下命令运行转换工具：
 ```bat
@@ -27,7 +27,7 @@ python .\replace-words.py
 网络 網路 
 ```
 一般可用在文本文档中的词语或者文字批量转换（如大陆台湾用语批量转换），不支持多行以及带空格的文本替换。
-### <span id="2">2.</span> 提取YouTube链接（[extract_youtube_links](extract_youtube_links)）
+### <span id="2">2.</span> 提取YouTube链接
 这是两个Python脚本，它会读取当前文件夹中名为`test.html`的文件，从中提取所有符合要求的`a`标签中的`href`和`title`属性（即YouTube链接和其对应标题），并将它们以指定的格式写入名为`output.txt`或`output_formatted.txt`的文件。标题占一行，YouTube链接放在该标题的下一行。
 
 请确保安装了`BeautifulSoup`和`requests`库，如果没有安装，请运行`pip install beautifulsoup4 requests`进行安装。在项目目录下，执行以下命令运行转换工具（任意一行即可）：
