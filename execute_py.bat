@@ -2,6 +2,7 @@
 chcp 65001
 setlocal enabledelayedexpansion
 
+:menu
 REM 获取当前文件夹下的所有子文件夹中的.py文件
 set /a count=1
 for /d %%I in (*) do (
@@ -22,25 +23,39 @@ for /d %%I in (*) do (
 )
 
 REM 提示用户选择要执行的py文件
-set /p choice=请输入要执行的文件编号：
+set /p choice=请输入要执行的文件编号（输入Q退出）：
 
-REM 执行用户选择的py文件
-set /a exec_count=1
-for /d %%I in (*) do (
-    pushd "%%I"
-    for %%F in (*.py) do (
-        if !exec_count! equ %choice% (
-            echo 执行 %%F
-            python "%%F"
-            goto :end
+if /i "%choice%"=="Q" (
+    goto :end
+) else (
+    REM 执行用户选择的py文件
+    set /a exec_count=1
+    for /d %%I in (*) do (
+        pushd "%%I"
+        for %%F in (*.py) do (
+            if !exec_count! equ %choice% (
+                echo 执行 %%F
+                python "%%F"
+                if errorlevel 1 (
+                    echo 运行失败。
+                    pause
+                    goto :menu
+                ) else (
+                    echo 程序运行成功。
+                    pause
+                    goto :menu
+                )
+            )
+            set /a exec_count+=1
         )
-        set /a exec_count+=1
+        popd
     )
-    popd
-)
 
-REM 用户选择的编号无效
-echo 无效的文件编号。
+    REM 用户选择的编号无效
+    echo 无效的文件编号。
+    pause
+    goto :menu
+)
 
 :end
 endlocal
