@@ -1,3 +1,5 @@
+"""批量替换文本中的文字"""
+
 import os
 
 def load_trans_rules(file_path):
