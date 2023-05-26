@@ -2,7 +2,6 @@
 chcp 65001
 setlocal enabledelayedexpansion
 
-:menu
 REM 获取当前文件夹下的所有子文件夹中的.py文件
 set /a count=1
 for /d %%I in (*) do (
@@ -12,10 +11,10 @@ for /d %%I in (*) do (
         for /f "tokens=*" %%D in ('type "%%F" ^| findstr /i /c:"\"\"\"') do (
             REM 去除doc描述中的引号和空格
             set "desc=%%D"
-            set "desc=!desc:\"=!"
+            set "desc=!desc:\"\"\"=!"
             set "desc=!desc: =!"
             REM 显示文件编号、描述和文件名
-            echo !count!. !desc! - %%F
+            echo !count!. !desc:~3,-3! - %%F
             set /a count+=1
         )
     )
@@ -23,39 +22,33 @@ for /d %%I in (*) do (
 )
 
 REM 提示用户选择要执行的py文件
-set /p choice=请输入要执行的文件编号（输入Q退出）：
+set /p choice=请输入要执行的文件编号：
 
-if /i "%choice%"=="Q" (
-    goto :end
-) else (
-    REM 执行用户选择的py文件
-    set /a exec_count=1
-    for /d %%I in (*) do (
-        pushd "%%I"
-        for %%F in (*.py) do (
-            if !exec_count! equ %choice% (
-                echo 执行 %%F
-                python "%%F"
-                if errorlevel 1 (
-                    echo 运行失败。
-                    pause
-                    goto :menu
-                ) else (
-                    echo 程序运行成功。
-                    pause
-                    goto :menu
-                )
+REM 执行用户选择的py文件
+set /a exec_count=1
+for /d %%I in (*) do (
+    pushd "%%I"
+    for %%F in (*.py) do (
+        if !exec_count! equ %choice% (
+            echo 执行 %%F
+            python "%%F"
+            if errorlevel 1 (
+                echo 运行失败。
+                pause
+                exit
+            ) else (
+                echo 程序运行成功。
+                pause
             )
-            set /a exec_count+=1
         )
-        popd
+        set /a exec_count+=1
     )
-
-    REM 用户选择的编号无效
-    echo 无效的文件编号。
-    pause
-    goto :menu
+    popd
 )
+
+REM 用户选择的编号无效
+echo 无效的文件编号。
+pause
 
 :end
 endlocal
