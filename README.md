@@ -14,6 +14,6 @@
 git clone https://github.com/Guojingxing/python-tools.git
 ```
 ## 详细说明
-详见[Wiki](https://github.com/Guojingxing/python-tools/wiki/Home)
+详见[Wiki](https://github.com/Guojingxing/python-tools/wiki/Home)。
 ## 授权许可
 本项目使用[MIT许可证](LICENSE)进行授权许可。
