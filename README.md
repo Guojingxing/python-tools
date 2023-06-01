@@ -8,7 +8,7 @@
 :-:|:---|:---
 1| 批量替换文本中的文字 | [replace-words.py](replace-words/replace-words.py)
 2| 提取YouTube链接 | [extract_youtube_links](extract_youtube_links)
-3| 简易视频/字幕下载软件（yt-dlp GUI） | [yt-dlp-simple-gui.py](yt-dlp-simple-gui/yt-dlp-simple-gui.py)
+3| 简易视频/字幕下载软件（yt-dlp GUI） |1. [yt-dlp-simple-gui.py](yt-dlp-simple-gui/yt-dlp-simple-gui.py)(停更)<br/>2. [Guojingxing/yt-dlp-simple-gui](https://github.com/Guojingxing/yt-dlp-simple-gui)
 ## 克隆项目
 使用以下命令克隆项目到本地：
 ```bat
